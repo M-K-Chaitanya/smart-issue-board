@@ -1,19 +1,75 @@
-# React + Vite
+# Smart Issue Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Smart Issue Board is a simple issue tracking web application built as part of an internship assignment.  
+It allows authenticated users to create and view issues with priority, status, and assignment details.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- Frontend: React (Vite)
+- Backend / Database: Firebase Firestore
+- Authentication: Firebase Auth (Email & Password)
+- Hosting: Vercel
+- Code Hosting: GitHub (Public Repository)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Why I chose this frontend stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# smart-issue-board
-# smart-issue-board
-# smart-issue-board
+I chose React with Vite because it provides fast development, a clean component-based architecture, and smooth integration with Firebase. Vite’s fast build and hot reload helped me focus on functionality instead of configuration.
+
+---
+
+## Firestore Data Structure
+
+A single collection named `issues` is used.
+
+Each issue document contains:
+- title
+- description
+- priority (Low / Medium / High)
+- status (Open / In Progress / Done)
+- assignedTo
+- createdBy
+- createdAt (timestamp)
+
+This structure is simple, scalable, and easy to maintain.
+
+---
+
+## Similar Issue Handling
+
+When creating a new issue, the application checks existing issues for similar titles.  
+If a similar issue exists, the user is warned and asked for confirmation before creating a duplicate issue.
+
+---
+
+## Status Rule Handling
+
+The application enforces a rule where an issue cannot be directly created with status `Done`.  
+Users must follow the proper flow instead of skipping steps, and a friendly message is shown when violated.
+
+---
+
+## Challenges Faced
+
+- Understanding Firebase authentication flow
+- Managing Firestore read/write operations
+- Handling validations without over-engineering
+
+---
+
+## Future Improvements
+
+- Edit and update issue status
+- Role-based access control
+- Search and filtering improvements
+- Enhanced UI and responsiveness
+
+---
+
+## Deployment
+
+The application is deployed on Vercel using environment variables for Firebase configuration.
+
