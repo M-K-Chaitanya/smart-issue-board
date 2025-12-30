@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-
 import { auth } from "./firebase";
 import Auth from "./Auth";
 import IssueForm from "./IssueForm";
 import IssueList from "./IssueList";
+import "./App.css";
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -15,15 +15,18 @@ function App() {
 
   if (!user) return <Auth />;
 
- return (
+return (
   <div className="container">
     <h2>Welcome</h2>
-    <p>Logged in as: {user.email}</p>
+    <p style={{ textAlign: "center" }}>
+      Logged in as: {user.email}
+    </p>
 
     <IssueForm />
     <IssueList />
   </div>
 );
+
 
 }
 
